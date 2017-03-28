@@ -1,0 +1,18 @@
+parameters:
+    ez_systems_restapi_extension_example.controller.class: EzSystems\RESTAPIExtensionExampleBundle\Rest\Controller\RESTExampleController
+    ez_systems_restapi_extension_example.value_object_visitor.class: EzSystems\RESTAPIExtensionExampleBundle\Rest\ValueObjectVisitor\Hello
+    ez_systems_restapi_extension_example.input_parser.class: EzSystems\RESTAPIExtensionExampleBundle\Rest\InputParser\Hello
+services:
+    ez_systems_restapi_extension_example.controller:
+        class: %ez_systems_restapi_extension_example.controller.class%
+    ez_systems_restapi_extension_example.value_object_visitor:
+        parent: ezpublish_rest.output.value_object_visitor.base
+        class: %ez_systems_restapi_extension_example.value_object_visitor.class%
+        tags:
+            - { name: ezpublish_rest.output.value_object_visitor, type: EzSystems\RESTAPIExtensionExampleBundle\Rest\Values\Hello }
+    ez_systems_restapi_extension_example.input_parser:
+        parent: ezpublish_rest.input.parser
+        class: %ez_systems_restapi_extension_example.input_parser.class%
+        tags:
+            - { name: ezpublish_rest.input.parser, mediaType: application/vnd.ez.api.Hello }
+

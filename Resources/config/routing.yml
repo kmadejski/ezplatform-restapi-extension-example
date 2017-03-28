@@ -1,0 +1,5 @@
+ez_systems_restapi_extension_example_hello:
+    path: /rest/example/hello/{name}
+    defaults:
+        _controller: ez_systems_restapi_extension_example.controller:hello
+    methods: [GET]
